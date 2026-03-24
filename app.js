@@ -74,3 +74,15 @@ const donors = [
 document.getElementById('donors').innerHTML = donors.map(d =>
     `<div class="donor"><b>${d.name}</b><div class="donor-note">${d.note}</div></div>`
 ).join('');
+
+// =====================
+// TABS
+// =====================
+document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+});
