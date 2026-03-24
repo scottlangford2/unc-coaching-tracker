@@ -1,15 +1,34 @@
 // =====================
 // FLIGHT ALERTS — topline
 // =====================
-const flightAlerts = [
-    { level: "none", text: 'No confirmed private flights between RDU and candidate cities detected yet. Search expected to begin once Davis departure is official. <a href="https://globe.adsbexchange.com/?airport=KRDU" target="_blank">Watch RDU live</a>' },
-    { level: "watch", text: 'Davis decision expected this week. Once official, watch for flights to <b>Gainesville (GNV)</b> — Todd Golden is 3/1 favorite. <a href="https://flightaware.com/live/findflight?origin=KRDU&destination=KGNV" target="_blank">RDU→GNV</a> <a href="https://flightaware.com/live/findflight?origin=KGNV&destination=KRDU" target="_blank">GNV→RDU</a>' },
-    { level: "watch", text: 'Florida\'s season ended Sunday. Golden is available now. <a href="https://globe.adsbexchange.com/?airport=KGNV" target="_blank">ADS-B Gainesville</a>' },
-    { level: "watch", text: 'Byington (Nashville) also a top target at 4/1. <a href="https://flightaware.com/live/findflight?origin=KRDU&destination=KBNA" target="_blank">RDU→BNA</a> <a href="https://flightaware.com/live/findflight?origin=KBNA&destination=KRDU" target="_blank">BNA→RDU</a>' },
+// =====================
+// FLIGHT SIGHTINGS — update this when flights are spotted
+// =====================
+const sightings = [
+    // Add sightings here as they happen:
+    // { time: "Mar 25 2:15 PM", level: "hot", text: "Gulfstream G280 departed RDU heading to GNV...", link: "https://..." }
 ];
-document.getElementById('flight-alerts').innerHTML = flightAlerts.map(a =>
-    `<div class="flight-alert flight-alert-${a.level}">${a.text}</div>`
-).join('');
+
+const watchStatus = {
+    level: "none", // "none" | "watch" | "hot"
+    text: 'No flights spotted yet. Davis decision expected this week — search likely begins after. <a href="https://globe.adsbexchange.com/?airport=KRDU" target="_blank">Watch RDU live</a>'
+};
+
+let alertsHTML = `<div class="sightings-header">Flight Sightings</div>`;
+alertsHTML += `<div class="flight-alert flight-alert-${watchStatus.level}">${watchStatus.text}</div>`;
+
+if (sightings.length > 0) {
+    alertsHTML += sightings.map(s =>
+        `<div class="flight-alert flight-alert-${s.level}">
+            <span class="sighting-time">${s.time}</span> ${s.text}
+            ${s.link ? `<a href="${s.link}" target="_blank">Track</a>` : ''}
+        </div>`
+    ).join('');
+} else {
+    alertsHTML += `<div class="no-sightings">No sightings reported. Check routes below or <a href="https://globe.adsbexchange.com/?airport=KRDU" target="_blank">monitor RDU on ADS-B Exchange</a>.</div>`;
+}
+
+document.getElementById('flight-alerts').innerHTML = alertsHTML;
 
 // =====================
 // CANDIDATES

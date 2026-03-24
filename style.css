@@ -29,6 +29,12 @@ td a:hover { text-decoration: underline; }
 .tips li { color: #94a3b8; font-size: 0.8rem; padding: 0.3rem 0 0.3rem 1rem; position: relative; }
 .tips li::before { content: '•'; position: absolute; left: 0; color: #7BAFD4; }
 
+/* FLIGHT SIGHTINGS */
+.sightings-header { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.sighting-time { color: #7BAFD4; font-weight: 700; font-size: 0.75rem; margin-right: 0.3rem; }
+.no-sightings { color: #64748b; font-size: 0.8rem; padding: 0.4rem 0; margin-bottom: 0.5rem; }
+.no-sightings a { color: #7BAFD4; }
+
 /* FLIGHT ALERTS */
 .flight-alert { border-radius: 6px; padding: 0.6rem 0.85rem; margin-bottom: 0.4rem; font-size: 0.82rem; line-height: 1.5; border-left: 4px solid; }
 .flight-alert b { color: #fff; }
