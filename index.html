@@ -3,252 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNC Basketball Coaching Search Tracker</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>UNC Coaching Search Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏀</text></svg>">
 </head>
 <body>
     <header>
-        <div class="header-content">
-            <div class="logo-area">
-                <div class="logo">UNC</div>
-                <div class="header-text">
-                    <h1>Coaching Search Tracker</h1>
-                    <p class="subtitle">North Carolina Tar Heels Basketball</p>
-                </div>
-            </div>
-            <div class="last-updated" id="lastUpdated">
-                <span class="pulse"></span>
-                <span>Live Tracking</span>
-            </div>
+        <div class="logo">UNC</div>
+        <div>
+            <h1>Coaching Search Tracker</h1>
+            <p class="sub">Private Flight Tracking + Alerts</p>
         </div>
     </header>
 
-    <div class="headlines-bar">
-        <div class="headlines-label">HEADLINES</div>
-        <div class="headlines-scroll">
-            <div class="headlines-track" id="headlinesTrack">
-                <span class="hl-item hl-breaking">Davis &amp; UNC "discussing future" — decision expected this week (ESPN)</span>
-                <span class="hl-item">Florida's Todd Golden now 3/1 betting favorite after Gators' early tournament exit</span>
-                <span class="hl-item">Booster support for Davis has "cratered" — donors willing to fund buyout + big hire (InsideCarolina)</span>
-                <span class="hl-item hl-breaking">Player meetings &amp; Davis radio show postponed — no decision announced Monday</span>
-                <span class="hl-item">Kentucky &amp; Kansas could also pursue Golden — UNC may need to act fast</span>
-                <span class="hl-item">Stephen A. Smith pushes Kenny Smith as candidate</span>
-                <span class="hl-item">Seth Greenberg: "I don't think it's as attractive a job as people think"</span>
-                <span class="hl-item">First outside hire in 74 years expected — breaking Dean Smith lineage</span>
-            </div>
-        </div>
+    <!-- ALERTS -->
+    <section id="alerts"></section>
+
+    <!-- HEADLINES -->
+    <h2 class="section-head">Headlines</h2>
+    <div id="headlines"></div>
+
+    <!-- FLIGHT TRACKING -->
+    <h2 class="section-head">RDU Watch — Private Arrivals</h2>
+    <div class="rdu-links">
+        <a href="https://globe.adsbexchange.com/?airport=KRDU" target="_blank">ADS-B Exchange — RDU</a>
+        <a href="https://flightaware.com/live/airport/KRDU/arrivals" target="_blank">FlightAware — RDU Arrivals</a>
+        <a href="https://globe.adsbexchange.com/?airport=KIGX" target="_blank">ADS-B — IGX (UNC Campus)</a>
+        <a href="https://globe.adsbexchange.com/?airport=KTTA" target="_blank">ADS-B — TTA (Raleigh Exec)</a>
+        <a href="https://registry.faa.gov/AircraftInquiry/Search/NNumberInquiry" target="_blank">FAA Tail # Lookup</a>
     </div>
 
-    <nav class="tab-nav">
-        <button class="tab-btn" data-tab="overview">Overview</button>
-        <button class="tab-btn" data-tab="candidates">Candidates</button>
-        <button class="tab-btn active" data-tab="flights">Flight Tracker</button>
-        <button class="tab-btn" data-tab="news">News Feed</button>
-        <button class="tab-btn" data-tab="timeline">Timeline</button>
-    </nav>
+    <h2 class="section-head">Route Monitor — Candidate Cities</h2>
+    <div class="routes" id="routes"></div>
 
-    <main>
-        <!-- OVERVIEW TAB -->
-        <section class="tab-content" id="tab-overview">
-            <div class="alert-banner">
-                <span class="alert-icon">⚠️</span>
-                <div>
-                    <strong>Developing Situation:</strong> Hubert Davis is not expected to return as head coach following UNC's historic first-round collapse against VCU. An orchestrated resignation is considered more likely than a firing. Decision expected this week.
-                </div>
-            </div>
-
-            <div class="two-col">
-                <div class="card">
-                    <h2>Betting Odds</h2>
-                    <div class="odds-list" id="oddsList"></div>
-                </div>
-                <div class="card">
-                    <h2>Key Developments</h2>
-                    <div class="developments-list">
-                        <div class="dev-item">
-                            <span class="dev-time">Mar 23</span>
-                            <span class="dev-text">UNC blows 19-pt lead to VCU in NCAA first round — largest first-round collapse in tournament history</span>
-                        </div>
-                        <div class="dev-item">
-                            <span class="dev-time">Mar 23</span>
-                            <span class="dev-text">Davis has no contact with coaching staff for 24+ hours after loss</span>
-                        </div>
-                        <div class="dev-item">
-                            <span class="dev-time">Mar 24</span>
-                            <span class="dev-text">Major booster group meets with UNC stakeholders; "lost faith" in program direction</span>
-                        </div>
-                        <div class="dev-item">
-                            <span class="dev-time">Mar 24</span>
-                            <span class="dev-text">Davis weekly radio show postponed indefinitely</span>
-                        </div>
-                        <div class="dev-item">
-                            <span class="dev-time">Mar 24</span>
-                            <span class="dev-text">ESPN's Thamel reports Davis not expected to return; "orchestrated resignation" likely</span>
-                        </div>
-                        <div class="dev-item">
-                            <span class="dev-time">Ongoing</span>
-                            <span class="dev-text">Boosters signal willingness to fund buyout + big-name hire package</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CANDIDATES TAB -->
-        <section class="tab-content" id="tab-candidates">
-            <div class="candidates-grid" id="candidatesGrid"></div>
-        </section>
-
-        <!-- FLIGHTS TAB -->
-        <section class="tab-content active" id="tab-flights">
-            <div class="alert-banner" style="margin-bottom: 1rem;">
-                <span class="alert-icon">✈️</span>
-                <div>
-                    <strong>Private Aviation Focus:</strong> Coaching searches use private jets — charter flights, university-owned aircraft, and booster planes. Commercial flights are irrelevant. Track ADS-B transponders, FBO activity, and tail numbers.
-                </div>
-            </div>
-
-            <!-- RDU / Chapel Hill Section -->
-            <div class="card rdu-master-card">
-                <h2>RDU — The Destination to Watch</h2>
-                <p class="rdu-desc">All candidates will fly INTO Raleigh-Durham. Focus on private/GA arrivals at RDU and nearby general aviation fields.</p>
-
-                <div class="fbo-grid">
-                    <div class="fbo-card">
-                        <div class="fbo-name">UNC Air Operations</div>
-                        <div class="fbo-detail">1050 Meridian Dr, Morrisville, NC 27560</div>
-                        <div class="fbo-detail">University-operated GA facility near RDU. UNC conducts 3-5 trips/week from here.</div>
-                        <div class="fbo-tag hot">PRIMARY TARGET</div>
-                    </div>
-                    <div class="fbo-card">
-                        <div class="fbo-name">Signature Flight Support — RDU</div>
-                        <div class="fbo-detail">1000 Trade Dr, Morrisville, NC</div>
-                        <div class="fbo-detail">Major FBO at RDU. Handles most charter and private arrivals.</div>
-                    </div>
-                    <div class="fbo-card">
-                        <div class="fbo-name">TTA — Raleigh Exec Jetport (Sanford)</div>
-                        <div class="fbo-detail">KTTA — Alternative GA airport ~45 min from Chapel Hill. Used for discreet arrivals.</div>
-                    </div>
-                    <div class="fbo-card">
-                        <div class="fbo-name">IGX — Horace Williams (Chapel Hill)</div>
-                        <div class="fbo-detail">UNC's own airport, right on campus. Small runway — limited to turboprops and light jets.</div>
-                    </div>
-                </div>
-
-                <div class="flight-links" style="margin-top: 1rem;">
-                    <a href="https://globe.adsbexchange.com/?airport=KRDU" target="_blank" class="flight-link pri">ADS-B Exchange — RDU</a>
-                    <a href="https://www.flightradar24.com/35.88,-78.79/11" target="_blank" class="flight-link pri">Flightradar24 — RDU Area</a>
-                    <a href="https://flightaware.com/live/airport/KRDU/arrivals" target="_blank" class="flight-link pri">FlightAware — RDU Arrivals</a>
-                    <a href="https://globe.adsbexchange.com/?airport=KTTA" target="_blank" class="flight-link">ADS-B Exchange — TTA</a>
-                    <a href="https://globe.adsbexchange.com/?airport=KIGX" target="_blank" class="flight-link">ADS-B Exchange — IGX</a>
-                </div>
-            </div>
-
-            <!-- ADS-B / Private Tracking Tools -->
-            <div class="card">
-                <h2>Private Jet Tracking Tools</h2>
-                <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">These tools show ADS-B transponder data from private and charter aircraft — the exact type of planes used in coaching searches.</p>
-                <div class="tracking-tools-grid">
-                    <a href="https://globe.adsbexchange.com/" target="_blank" class="tool-card">
-                        <div class="tool-name">ADS-B Exchange</div>
-                        <div class="tool-desc">Unfiltered ADS-B data — shows ALL aircraft including private jets that other trackers hide. Best tool for this purpose.</div>
-                        <div class="fbo-tag hot">BEST FOR PRIVATE</div>
-                    </a>
-                    <a href="https://www.flightradar24.com/" target="_blank" class="tool-card">
-                        <div class="tool-name">Flightradar24</div>
-                        <div class="tool-desc">Most popular tracker. Good map interface. Some private jets may be filtered.</div>
-                    </a>
-                    <a href="https://flightaware.com/" target="_blank" class="tool-card">
-                        <div class="tool-name">FlightAware</div>
-                        <div class="tool-desc">Strong for tail number lookups and flight history. Search by N-number to track specific aircraft.</div>
-                    </a>
-                    <a href="https://www.radarbox.com/" target="_blank" class="tool-card">
-                        <div class="tool-name">RadarBox</div>
-                        <div class="tool-desc">Good ADS-B coverage. Filter by aircraft type (business jets) for better results.</div>
-                    </a>
-                    <a href="https://planefinder.net/" target="_blank" class="tool-card">
-                        <div class="tool-name">Planefinder</div>
-                        <div class="tool-desc">ADS-B tracker with aircraft type filtering. Useful for spotting Gulfstreams and Citations.</div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Tail Number / N-Number Search -->
-            <div class="card">
-                <h2>Tail Number (N-Number) Lookup</h2>
-                <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">If you spot a suspicious aircraft, look up its N-number to find the registered owner. University and booster-owned planes are key.</p>
-                <div class="flight-links">
-                    <a href="https://registry.faa.gov/AircraftInquiry/Search/NNumberInquiry" target="_blank" class="flight-link pri">FAA N-Number Registry</a>
-                    <a href="https://flightaware.com/live/flight/" target="_blank" class="flight-link">FlightAware Tail Lookup</a>
-                    <a href="https://globe.adsbexchange.com/" target="_blank" class="flight-link">ADS-B Exchange Search</a>
-                </div>
-                <div class="tail-tips">
-                    <div class="tail-tip">Search FAA registry for aircraft owned by "University of North Carolina", "UNC", or known booster names/companies</div>
-                    <div class="tail-tip">Charter companies like NetJets, Wheels Up, Flexjet often used — harder to trace but watch the routes</div>
-                    <div class="tail-tip">Common coaching search aircraft: Gulfstream G200/G280/G450, Citation CJ3/XLS, Learjet 45/75, King Air 350</div>
-                </div>
-            </div>
-
-            <!-- Route Monitoring — Candidate Cities -->
-            <h3 class="section-title">Route Monitor — Candidate City Airports</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Track private jet routes between these airports and the RDU/Chapel Hill area. Click to see live ADS-B and route data.</p>
-            <div class="flight-grid" id="flightGrid"></div>
-
-            <!-- What to Watch For -->
-            <div class="card flight-tips">
-                <h3>Private Aviation Intelligence — What to Watch</h3>
-                <ul>
-                    <li><strong>Gulfstreams, Citations, Learjets, King Airs</strong> flying between candidate cities and RDU — these are the typical coaching search aircraft</li>
-                    <li><strong>UNC-affiliated tail numbers</strong> — Search FAA registry for aircraft owned by UNC, the UNC System, or known Tar Heel boosters</li>
-                    <li><strong>FBO activity at RDU GA terminal</strong> — Watch for unusual private arrivals at Signature Flight Support or UNC Air Ops</li>
-                    <li><strong>Late night / early morning flights</strong> — Discreet travel to avoid detection; 10pm-6am flights between candidate cities and RDU are highly suspicious</li>
-                    <li><strong>Round trips under 12 hours</strong> — Quick "fly in, interview, fly out" pattern is the classic tell</li>
-                    <li><strong>Horace Williams Airport (IGX)</strong> — UNC's on-campus airfield; any business jet landing here is almost certainly UNC-related</li>
-                    <li><strong>NetJets / Wheels Up / Flexjet charters</strong> — Schools often use charter companies; watch for business jets on relevant routes even without a UNC tail number</li>
-                    <li><strong>ADS-B Exchange is best</strong> — Unlike FlightAware/FR24, it doesn't filter out aircraft at owner request. Most comprehensive for private aviation.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- NEWS TAB -->
-        <section class="tab-content" id="tab-news">
-            <div class="news-filters">
-                <button class="filter-btn active" data-filter="all">All Sources</button>
-                <button class="filter-btn" data-filter="espn">ESPN</button>
-                <button class="filter-btn" data-filter="si">Sports Illustrated</button>
-                <button class="filter-btn" data-filter="cbs">CBS Sports</button>
-                <button class="filter-btn" data-filter="social">Social / Forums</button>
-            </div>
-            <div class="news-list" id="newsList"></div>
-            <div class="card news-sources">
-                <h3>Live Sources to Monitor</h3>
-                <div class="source-links">
-                    <a href="https://www.google.com/search?q=UNC+basketball+coaching+search&tbm=nws" target="_blank" class="source-link">Google News</a>
-                    <a href="https://www.espn.com/college-basketball/team/_/id/153/north-carolina-tar-heels" target="_blank" class="source-link">ESPN UNC</a>
-                    <a href="https://www.cbssports.com/college-basketball/news/" target="_blank" class="source-link">CBS Sports</a>
-                    <a href="https://www.si.com/college/unc" target="_blank" class="source-link">SI UNC</a>
-                    <a href="https://247sports.com/college/north-carolina/" target="_blank" class="source-link">247Sports</a>
-                    <a href="https://www.insidecarolina.com/" target="_blank" class="source-link">InsideCarolina</a>
-                    <a href="https://x.com/search?q=UNC%20basketball%20coach&f=live" target="_blank" class="source-link">X / Twitter</a>
-                    <a href="https://www.reddit.com/r/CollegeBasketball/search/?q=UNC+coach" target="_blank" class="source-link">Reddit CBB</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- TIMELINE TAB -->
-        <section class="tab-content" id="tab-timeline">
-            <div class="timeline" id="timeline"></div>
-        </section>
-    </main>
-
-    <footer>
-        <p>UNC Basketball Coaching Search Tracker — Fan-made, unofficial. Not affiliated with UNC or the NCAA.</p>
-        <p>Data sourced from public reporting. Flight tracking links point to public tools.</p>
-    </footer>
-
+    <footer>Fan-made, unofficial. Not affiliated with UNC.</footer>
     <script src="app.js"></script>
 </body>
 </html>
