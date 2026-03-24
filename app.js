@@ -110,6 +110,69 @@ const candidates = [
             { code: "PHL", name: "Philadelphia International", city: "Philadelphia, PA" }
         ],
         note: "Two national titles at Villanova. Retired in 2022. Most accomplished candidate but would need to be coaxed out of retirement. Dream hire for many fans."
+    },
+    {
+        name: "Grant McCasland",
+        school: "Texas Tech",
+        odds: "18/1",
+        oddsRank: 9,
+        age: null,
+        record: "Built North Texas into C-USA power, now at Texas Tech",
+        salary: "Unknown",
+        airports: [
+            { code: "LBB", name: "Lubbock Preston Smith Intl", city: "Lubbock, TX" }
+        ],
+        note: "Strong program builder. Took North Texas to new heights before moving to Texas Tech. Under-the-radar candidate."
+    },
+    {
+        name: "Tommy Lloyd",
+        school: "Arizona",
+        odds: "20/1",
+        oddsRank: 10,
+        age: null,
+        record: "Pac-12/Big 12 contender at Arizona",
+        salary: "Unknown",
+        airports: [
+            { code: "TUS", name: "Tucson International", city: "Tucson, AZ" }
+        ],
+        note: "Long-time Gonzaga assistant before becoming Arizona HC. Strong international recruiting pipeline."
+    },
+    {
+        name: "Wes Miller",
+        school: "Cincinnati",
+        odds: "22/1",
+        oddsRank: 11,
+        age: null,
+        record: "Former UNC player, built UNC-Greensboro, now at Cincinnati",
+        salary: "Unknown",
+        airports: [
+            { code: "CVG", name: "Cincinnati/Northern Kentucky Intl", city: "Cincinnati, OH" }
+        ],
+        note: "Carolina family connection — played under Roy Williams. Would satisfy the 'keep it in the family' crowd while still being an outside hire."
+    },
+    {
+        name: "Kenny Smith",
+        school: "TV Analyst (TNT)",
+        odds: "50/1",
+        oddsRank: 12,
+        age: null,
+        record: "UNC legend, 2x NBA champion, no coaching experience",
+        salary: "N/A",
+        airports: [
+            { code: "ATL", name: "Hartsfield-Jackson Atlanta Intl", city: "Atlanta, GA" }
+        ],
+        note: "Stephen A. Smith pushing him publicly. UNC legend but zero coaching experience at any level. Long shot."
+    },
+    {
+        name: "Sean May",
+        school: "UNC (Assistant)",
+        odds: "40/1",
+        oddsRank: 13,
+        age: null,
+        record: "Current UNC assistant, 2005 Final Four MOP",
+        salary: "N/A — Current staff",
+        airports: [],
+        note: "Internal candidate. Already in Chapel Hill. Elite recruiter but no head coaching experience. Would maintain Carolina family tradition."
     }
 ];
 
@@ -290,7 +353,11 @@ function renderFlights() {
         BOS: { lat: 42.36, lon: -71.01 },
         ORD: { lat: 41.97, lon: -87.91 },
         MDW: { lat: 41.79, lon: -87.75 },
-        PHL: { lat: 39.87, lon: -75.24 }
+        PHL: { lat: 39.87, lon: -75.24 },
+        LBB: { lat: 33.66, lon: -101.82 },
+        TUS: { lat: 32.12, lon: -110.94 },
+        CVG: { lat: 39.05, lon: -84.67 },
+        ATL: { lat: 33.64, lon: -84.43 }
     };
 
     candidates.forEach(c => {
@@ -394,3 +461,9 @@ renderCandidates();
 renderFlights();
 renderNews();
 renderTimeline();
+
+// Duplicate headlines for seamless loop
+const track = document.getElementById('headlinesTrack');
+if (track) {
+    track.innerHTML += track.innerHTML;
+}

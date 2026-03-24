@@ -100,6 +100,62 @@ header {
     50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
 }
 
+/* HEADLINES TICKER */
+.headlines-bar {
+    background: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 36px;
+    position: sticky;
+    top: 72px;
+    z-index: 99;
+}
+
+.headlines-label {
+    background: var(--red);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 0.35rem 0.75rem;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.headlines-scroll {
+    overflow: hidden;
+    flex: 1;
+    position: relative;
+}
+
+.headlines-track {
+    display: flex;
+    gap: 3rem;
+    white-space: nowrap;
+    animation: scroll-headlines 60s linear infinite;
+    padding-left: 1rem;
+}
+
+.hl-item {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.hl-item.hl-breaking {
+    color: var(--yellow);
+    font-weight: 600;
+}
+
+@keyframes scroll-headlines {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
 /* NAV TABS */
 .tab-nav {
     max-width: 1400px;
