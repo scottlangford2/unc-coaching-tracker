@@ -278,30 +278,60 @@ function renderFlights() {
     const grid = document.getElementById('flightGrid');
     const allAirports = [];
 
+    // Airport coordinates for ADS-B Exchange map links
+    const airportCoords = {
+        GNV: { lat: 29.69, lon: -82.27 },
+        JAX: { lat: 30.49, lon: -81.69 },
+        BNA: { lat: 36.12, lon: -86.68 },
+        DSM: { lat: 41.53, lon: -93.66 },
+        BHM: { lat: 33.56, lon: -86.75 },
+        TCL: { lat: 33.22, lon: -87.61 },
+        DTW: { lat: 42.21, lon: -83.35 },
+        BOS: { lat: 42.36, lon: -71.01 },
+        ORD: { lat: 41.97, lon: -87.91 },
+        MDW: { lat: 41.79, lon: -87.75 },
+        PHL: { lat: 39.87, lon: -75.24 }
+    };
+
     candidates.forEach(c => {
         c.airports.forEach(a => {
             if (!allAirports.find(x => x.code === a.code)) {
-                allAirports.push({ ...a, candidate: c.name, school: c.school, odds: c.odds });
+                allAirports.push({
+                    ...a,
+                    candidate: c.name,
+                    school: c.school,
+                    odds: c.odds,
+                    coords: airportCoords[a.code] || null
+                });
             }
         });
     });
 
-    grid.innerHTML = allAirports.map(a => `
+    grid.innerHTML = allAirports.map(a => {
+        const adsbLink = a.coords
+            ? `https://globe.adsbexchange.com/?airport=K${a.code}`
+            : '#';
+        const adsbAreaLink = a.coords
+            ? `https://globe.adsbexchange.com/?lat=${a.coords.lat}&lon=${a.coords.lon}&zoom=10`
+            : '#';
+
+        return `
         <div class="card destination-card">
             <div class="airport-header">
                 <div class="airport-code">${a.code}</div>
                 <div class="airport-name">${a.name}</div>
             </div>
             <div class="airport-detail">${a.city}</div>
-            <div class="candidate-tag">→ ${a.candidate} (${a.school}) — ${a.odds}</div>
+            <div class="candidate-tag">→ <strong>${a.candidate}</strong> (${a.school}) — ${a.odds}</div>
             <div class="flight-links" style="margin-top: 0.75rem;">
-                <a href="https://www.flightradar24.com/airport/${a.code.toLowerCase()}" target="_blank" class="flight-link">Flightradar24</a>
-                <a href="https://flightaware.com/live/airport/K${a.code}" target="_blank" class="flight-link">FlightAware</a>
-                <a href="https://flightaware.com/live/findflight?origin=K${a.code}&destination=KRDU" target="_blank" class="flight-link">→ RDU Routes</a>
+                <a href="${adsbLink}" target="_blank" class="flight-link pri">ADS-B Exchange</a>
+                <a href="https://flightaware.com/live/findflight?origin=K${a.code}&destination=KRDU" target="_blank" class="flight-link pri">${a.code} → RDU</a>
                 <a href="https://flightaware.com/live/findflight?origin=KRDU&destination=K${a.code}" target="_blank" class="flight-link">RDU → ${a.code}</a>
+                <a href="https://flightaware.com/live/airport/K${a.code}/departures" target="_blank" class="flight-link">Departures</a>
+                <a href="https://www.flightradar24.com/${a.coords ? a.coords.lat + ',' + a.coords.lon + '/10' : 'airport/' + a.code.toLowerCase()}" target="_blank" class="flight-link">FR24 Map</a>
             </div>
         </div>
-    `).join('');
+    `}).join('');
 }
 
 function renderNews(filter = 'all') {
