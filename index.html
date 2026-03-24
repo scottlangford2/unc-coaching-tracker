@@ -9,19 +9,14 @@
 </head>
 <body>
     <h1>UNC Coaching Search — Flight Tracker</h1>
-    <p class="desc">Watching for private aircraft traveling between Chapel Hill and coaching candidate cities. UNC may use university planes, booster aircraft, charters, or shell LLCs to stay discreet.</p>
 
-    <h2>UNC Aircraft to Watch</h2>
-    <p class="note">UNC Air Operations flies Beechcraft Barons and Daher TBMs out of RDU. Known tail: <b>N228CH</b> (TBM-850). Search FAA for more registered to "University of North Carolina".</p>
-    <div class="links">
-        <a href="https://registry.faa.gov/aircraftinquiry/Search/NameInquiry" target="_blank">FAA Owner Search</a>
-        <a href="https://flightaware.com/live/flight/N228CH" target="_blank">Track N228CH</a>
-        <a href="https://globe.adsbexchange.com/?icao=a27a4b" target="_blank">N228CH on ADS-B</a>
-    </div>
+    <div id="flight-alerts"></div>
+
+    <h2>News</h2>
+    <div id="news"></div>
 
     <h2>Watch These Routes</h2>
-    <p class="note">Any private jet (not just UNC-owned) flying between RDU/IGX and these cities is worth flagging. Boosters and charter companies are harder to trace — watch the route, not just the tail number.</p>
-
+    <p class="note">Any private jet flying between RDU/IGX and these cities is worth flagging. Watch the route, not just the tail number.</p>
     <table>
         <thead>
             <tr><th>Candidate</th><th>School</th><th>City</th><th>Airport</th><th>Track</th></tr>
@@ -29,35 +24,39 @@
         <tbody id="routes"></tbody>
     </table>
 
-    <h2>Headlines</h2>
-    <div id="headlines"></div>
+    <h2>UNC Aircraft</h2>
+    <p class="note">UNC Air Ops flies Barons and TBMs out of RDU. Known tail: <b>N228CH</b> (TBM-850). Search FAA for more.</p>
+    <div class="links">
+        <a href="https://registry.faa.gov/aircraftinquiry/Search/NameInquiry" target="_blank">FAA Owner Search</a>
+        <a href="https://flightaware.com/live/flight/N228CH" target="_blank">Track N228CH</a>
+        <a href="https://globe.adsbexchange.com/?icao=a27a4b" target="_blank">N228CH on ADS-B</a>
+    </div>
 
-    <h2>Prominent UNC Donors / Boosters</h2>
-    <p class="note">These people (or their companies/LLCs) may own aircraft used in the search. Search FAA by name.</p>
+    <h2>Donors / Boosters</h2>
+    <p class="note">May own aircraft used in the search. Search FAA by name.</p>
     <div id="donors"></div>
 
     <h2>Community Trackers</h2>
     <div class="links">
-        <a href="https://x.com/search?q=UNC%20coaching%20flight&f=live" target="_blank">X Search: UNC coaching flight</a>
-        <a href="https://x.com/search?q=UNC%20private%20jet%20RDU&f=live" target="_blank">X Search: UNC private jet RDU</a>
-        <a href="https://www.reddit.com/r/CollegeBasketball/search/?q=UNC+coaching+flight" target="_blank">Reddit: UNC coaching flight</a>
-        <a href="https://www.insidecarolina.com/" target="_blank">InsideCarolina Forums</a>
+        <a href="https://x.com/search?q=UNC%20coaching%20flight&f=live" target="_blank">X: UNC coaching flight</a>
+        <a href="https://x.com/search?q=UNC%20private%20jet%20RDU&f=live" target="_blank">X: UNC private jet RDU</a>
+        <a href="https://www.reddit.com/r/CollegeBasketball/search/?q=UNC+coaching+flight" target="_blank">Reddit</a>
+        <a href="https://www.insidecarolina.com/" target="_blank">InsideCarolina</a>
     </div>
 
     <h2>How to Spot It</h2>
     <div class="links">
-        <a href="https://globe.adsbexchange.com/?airport=KRDU" target="_blank">ADS-B Exchange — RDU</a>
-        <a href="https://globe.adsbexchange.com/?airport=KIGX" target="_blank">ADS-B — IGX (UNC Campus)</a>
-        <a href="https://globe.adsbexchange.com/?airport=KTTA" target="_blank">ADS-B — TTA (Raleigh Exec)</a>
-        <a href="https://flightaware.com/live/airport/KRDU/arrivals" target="_blank">FlightAware RDU Arrivals</a>
+        <a href="https://globe.adsbexchange.com/?airport=KRDU" target="_blank">ADS-B — RDU</a>
+        <a href="https://globe.adsbexchange.com/?airport=KIGX" target="_blank">ADS-B — IGX (Campus)</a>
+        <a href="https://globe.adsbexchange.com/?airport=KTTA" target="_blank">ADS-B — TTA</a>
+        <a href="https://flightaware.com/live/airport/KRDU/arrivals" target="_blank">FlightAware RDU</a>
     </div>
     <ul class="tips">
-        <li>UNC planes: Barons and TBMs based at RDU. But they may use charters to hide.</li>
-        <li>Booster planes: Search FAA by name of known boosters or their companies.</li>
-        <li>Charter/fractional: NetJets, Wheels Up, Flexjet — watch the route even if you can't ID the owner.</li>
-        <li>Shell LLCs: Some owners register planes under LLCs. Cross-reference LLC addresses with Chapel Hill/NC.</li>
-        <li>ADS-B Exchange shows ALL planes. FlightAware/FR24 let owners hide — use ADS-B Exchange first.</li>
-        <li>Look for round trips under 12 hours. Late night/early morning flights. Gulfstreams, Citations, King Airs.</li>
+        <li>UNC may use charters (NetJets, Wheels Up, Flexjet) to hide.</li>
+        <li>Booster planes: search FAA by donor names or their companies.</li>
+        <li>Shell LLCs: cross-reference LLC addresses with Chapel Hill/NC.</li>
+        <li>ADS-B Exchange shows ALL planes — others let owners hide.</li>
+        <li>Look for round trips under 12 hours. Late night flights. Gulfstreams, Citations, King Airs.</li>
     </ul>
 
     <footer>Fan-made, unofficial.</footer>

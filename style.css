@@ -21,6 +21,21 @@ td a:hover { text-decoration: underline; }
 .tips li { color: #94a3b8; font-size: 0.8rem; padding: 0.3rem 0 0.3rem 1rem; position: relative; }
 .tips li::before { content: '•'; position: absolute; left: 0; color: #7BAFD4; }
 
+/* FLIGHT ALERTS */
+.flight-alert { border-radius: 6px; padding: 0.6rem 0.85rem; margin-bottom: 0.4rem; font-size: 0.82rem; line-height: 1.5; border-left: 4px solid; }
+.flight-alert b { color: #fff; }
+.flight-alert-none { background: rgba(100,116,139,0.1); border-color: #64748b; color: #94a3b8; }
+.flight-alert-watch { background: rgba(234,179,8,0.1); border-color: #eab308; color: #e2e8f0; }
+.flight-alert-hot { background: rgba(239,68,68,0.12); border-color: #ef4444; color: #e2e8f0; }
+.flight-alert a { color: #7BAFD4; font-weight: 700; margin-left: 0.3rem; }
+
+/* NEWS */
+.news-item { display: block; background: #111827; border: 1px solid #1e293b; border-radius: 6px; padding: 0.6rem 0.85rem; margin-bottom: 0.4rem; text-decoration: none; color: #e2e8f0; }
+.news-item:hover { border-color: #7BAFD4; }
+.news-head { font-size: 0.82rem; }
+.news-head b { color: #fff; }
+.news-detail { color: #94a3b8; font-size: 0.75rem; margin-top: 0.2rem; }
+
 .headline { display: block; background: #111827; border: 1px solid #1e293b; border-radius: 6px; padding: 0.5rem 0.75rem; margin-bottom: 0.35rem; text-decoration: none; color: #e2e8f0; font-size: 0.82rem; font-weight: 600; }
 .headline:hover { border-color: #7BAFD4; }
 .hl-src { color: #94a3b8; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-left: 0.4rem; }
