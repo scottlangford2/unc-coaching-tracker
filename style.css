@@ -3,10 +3,10 @@ body { font-family: 'Inter', sans-serif; background: #0a0e1a; color: #e2e8f0; pa
 h1 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem; }
 
 /* TABS */
-.tabs { display: flex; gap: 0.25rem; margin-bottom: 1rem; border-bottom: 1px solid #1e293b; }
-.tab { background: none; border: none; color: #94a3b8; font-family: inherit; font-size: 0.9rem; font-weight: 700; padding: 0.6rem 1.25rem; cursor: pointer; border-bottom: 2px solid transparent; }
-.tab:hover { color: #e2e8f0; }
-.tab.active { color: #7BAFD4; border-bottom-color: #7BAFD4; }
+.tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.tab { background: #1e293b; border: 1px solid #334155; color: #94a3b8; font-family: inherit; font-size: 0.9rem; font-weight: 700; padding: 0.6rem 1.5rem; cursor: pointer; border-radius: 6px; }
+.tab:hover { background: #334155; color: #e2e8f0; }
+.tab.active { background: #7BAFD4; color: #13294B; border-color: #7BAFD4; }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 h2 { font-size: 0.95rem; font-weight: 700; color: #7BAFD4; margin: 1.5rem 0 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
