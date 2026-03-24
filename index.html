@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNC Basketball Coaching Search Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏀</text></svg>">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <div class="logo">UNC</div>
+                <div class="header-text">
+                    <h1>Coaching Search Tracker</h1>
+                    <p class="subtitle">North Carolina Tar Heels Basketball</p>
+                </div>
+            </div>
+            <div class="last-updated" id="lastUpdated">
+                <span class="pulse"></span>
+                <span>Live Tracking</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="overview">Overview</button>
+        <button class="tab-btn" data-tab="candidates">Candidates</button>
+        <button class="tab-btn" data-tab="flights">Flight Tracker</button>
+        <button class="tab-btn" data-tab="news">News Feed</button>
+        <button class="tab-btn" data-tab="timeline">Timeline</button>
+    </nav>
+
+    <main>
+        <!-- OVERVIEW TAB -->
+        <section class="tab-content active" id="tab-overview">
+            <div class="alert-banner">
+                <span class="alert-icon">⚠️</span>
+                <div>
+                    <strong>Developing Situation:</strong> Hubert Davis is not expected to return as head coach following UNC's historic first-round collapse against VCU. An orchestrated resignation is considered more likely than a firing. Decision expected this week.
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="candidateCount">8</div>
+                    <div class="stat-label">Candidates Tracked</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="airportCount">10</div>
+                    <div class="stat-label">Airports Monitored</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$5.3M</div>
+                    <div class="stat-label">Davis Buyout</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">74</div>
+                    <div class="stat-label">Years Since Outside Hire</div>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div class="card">
+                    <h2>Betting Odds</h2>
+                    <div class="odds-list" id="oddsList"></div>
+                </div>
+                <div class="card">
+                    <h2>Key Developments</h2>
+                    <div class="developments-list">
+                        <div class="dev-item">
+                            <span class="dev-time">Mar 23</span>
+                            <span class="dev-text">UNC blows 19-pt lead to VCU in NCAA first round — largest first-round collapse in tournament history</span>
+                        </div>
+                        <div class="dev-item">
+                            <span class="dev-time">Mar 23</span>
+                            <span class="dev-text">Davis has no contact with coaching staff for 24+ hours after loss</span>
+                        </div>
+                        <div class="dev-item">
+                            <span class="dev-time">Mar 24</span>
+                            <span class="dev-text">Major booster group meets with UNC stakeholders; "lost faith" in program direction</span>
+                        </div>
+                        <div class="dev-item">
+                            <span class="dev-time">Mar 24</span>
+                            <span class="dev-text">Davis weekly radio show postponed indefinitely</span>
+                        </div>
+                        <div class="dev-item">
+                            <span class="dev-time">Mar 24</span>
+                            <span class="dev-text">ESPN's Thamel reports Davis not expected to return; "orchestrated resignation" likely</span>
+                        </div>
+                        <div class="dev-item">
+                            <span class="dev-time">Ongoing</span>
+                            <span class="dev-text">Boosters signal willingness to fund buyout + big-name hire package</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CANDIDATES TAB -->
+        <section class="tab-content" id="tab-candidates">
+            <div class="candidates-grid" id="candidatesGrid"></div>
+        </section>
+
+        <!-- FLIGHTS TAB -->
+        <section class="tab-content" id="tab-flights">
+            <div class="card flight-intro">
+                <h2>Flight Tracking Dashboard</h2>
+                <p>Monitor flights between RDU (Raleigh-Durham) and airports near coaching candidates. UNC operates flights out of <strong>UNC Air Operations</strong> near RDU General Aviation (1050 Meridian Drive, Morrisville, NC).</p>
+            </div>
+
+            <div class="flight-grid">
+                <div class="card destination-card rdu-card">
+                    <div class="airport-header">
+                        <div class="airport-code">RDU</div>
+                        <div class="airport-name">Raleigh-Durham International</div>
+                    </div>
+                    <div class="airport-detail">Chapel Hill / UNC — <strong>Primary arrival airport to watch</strong></div>
+                    <div class="flight-links">
+                        <a href="https://www.flightradar24.com/airport/rdu" target="_blank" class="flight-link">Flightradar24</a>
+                        <a href="https://flightaware.com/live/airport/KRDU" target="_blank" class="flight-link">FlightAware</a>
+                        <a href="https://www.radarbox.com/airport/KRDU" target="_blank" class="flight-link">RadarBox</a>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title">Candidate Origin Airports</h3>
+            <div class="flight-grid" id="flightGrid"></div>
+
+            <div class="card flight-tips">
+                <h3>What to Watch For</h3>
+                <ul>
+                    <li><strong>Private jets</strong> flying between RDU and candidate cities — especially Gulfstreams or Citations registered to university-affiliated entities</li>
+                    <li><strong>UNC tail numbers</strong> — Check N-numbers associated with UNC or the UNC System</li>
+                    <li><strong>Late night / early morning flights</strong> — Coaching searches often involve discreet travel outside normal hours</li>
+                    <li><strong>Round trips within 24 hours</strong> — Quick visits suggest interview trips</li>
+                    <li><strong>Multiple candidate-city flights</strong> on the same day — Indicates active search with multiple interviews</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- NEWS TAB -->
+        <section class="tab-content" id="tab-news">
+            <div class="news-filters">
+                <button class="filter-btn active" data-filter="all">All Sources</button>
+                <button class="filter-btn" data-filter="espn">ESPN</button>
+                <button class="filter-btn" data-filter="si">Sports Illustrated</button>
+                <button class="filter-btn" data-filter="cbs">CBS Sports</button>
+                <button class="filter-btn" data-filter="social">Social / Forums</button>
+            </div>
+            <div class="news-list" id="newsList"></div>
+            <div class="card news-sources">
+                <h3>Live Sources to Monitor</h3>
+                <div class="source-links">
+                    <a href="https://www.google.com/search?q=UNC+basketball+coaching+search&tbm=nws" target="_blank" class="source-link">Google News</a>
+                    <a href="https://www.espn.com/college-basketball/team/_/id/153/north-carolina-tar-heels" target="_blank" class="source-link">ESPN UNC</a>
+                    <a href="https://www.cbssports.com/college-basketball/news/" target="_blank" class="source-link">CBS Sports</a>
+                    <a href="https://www.si.com/college/unc" target="_blank" class="source-link">SI UNC</a>
+                    <a href="https://247sports.com/college/north-carolina/" target="_blank" class="source-link">247Sports</a>
+                    <a href="https://www.insidecarolina.com/" target="_blank" class="source-link">InsideCarolina</a>
+                    <a href="https://x.com/search?q=UNC%20basketball%20coach&f=live" target="_blank" class="source-link">X / Twitter</a>
+                    <a href="https://www.reddit.com/r/CollegeBasketball/search/?q=UNC+coach" target="_blank" class="source-link">Reddit CBB</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE TAB -->
+        <section class="tab-content" id="tab-timeline">
+            <div class="timeline" id="timeline"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>UNC Basketball Coaching Search Tracker — Fan-made, unofficial. Not affiliated with UNC or the NCAA.</p>
+        <p>Data sourced from public reporting. Flight tracking links point to public tools.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
