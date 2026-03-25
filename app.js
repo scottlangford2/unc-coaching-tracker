@@ -46,10 +46,25 @@ const candidates = [
     { name: "Tommy Lloyd", school: "Arizona", city: "Tucson, AZ", code: "TUS", odds: "20/1" },
     { name: "Wes Miller", school: "Cincinnati", city: "Cincinnati, OH", code: "CVG", odds: "22/1" },
     { name: "Kenny Smith", school: "TV Analyst", city: "Atlanta, GA", code: "ATL", odds: "50/1" },
-    { name: "Sean May", school: "UNC (Asst)", city: "Chapel Hill", code: null, odds: "40/1" },
+    { name: "Sean May", school: "UNC (Asst)", city: "Chapel Hill", code: null, odds: "10/1" },
+    { name: "Scott Drew", school: "Baylor", city: "Waco, TX", code: "ACT", odds: "14/1" },
+    { name: "Jerry Stackhouse", school: "Vanderbilt (fmr)", city: "Nashville, TN", code: "BNA", odds: "16/1" },
+    { name: "Jeff Lebo", school: "East Tennessee St", city: "Johnson City, TN", code: "TRI", odds: "20/1" },
+    { name: "King Rice", school: "Monmouth", city: "West Long Branch, NJ", code: "EWR", odds: "20/1" },
+    { name: "Marcus Paige", school: "UNC (Asst)", city: "Chapel Hill", code: null, odds: "22/1" },
 ];
 
-document.getElementById('routes').innerHTML = candidates.map(c => `<tr>
+// Odds table — sorted by odds
+const oddsOrder = candidates.slice().sort((a, b) => {
+    const parseOdds = s => parseInt(s.split('/')[0]);
+    return parseOdds(a.odds) - parseOdds(b.odds);
+});
+document.getElementById('odds').innerHTML = oddsOrder.map(c =>
+    `<tr><td><b>${c.name}</b></td><td>${c.school}</td><td>${c.odds}</td></tr>`
+).join('');
+
+// Routes table — sorted by odds
+document.getElementById('routes').innerHTML = oddsOrder.map(c => `<tr>
     <td><b>${c.name}</b></td>
     <td>${c.school}</td>
     <td>${c.city}</td>
